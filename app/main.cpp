@@ -191,7 +191,6 @@ int main(int argc, char* argv[])
 	int res = runQtApplication(argc, argv, logger);
 
 	delete logger;
-
-	qWarning("SDRangel quit.");
+	qWarning("SDR Analyzer quit.");
 	return res;
 }

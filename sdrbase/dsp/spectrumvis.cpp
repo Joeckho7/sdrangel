@@ -53,6 +53,7 @@ SpectrumVis::SpectrumVis(Real scalef) :
     m_specMax(0.0f),
     m_centerFrequency(0),
     m_sampleRate(48000),
+    m_nrOfBwSample(0),
 	m_ofs(0),
     m_powFFTDiv(1.0),
     m_guiMessageQueue(nullptr)
@@ -614,6 +615,15 @@ void SpectrumVis::processFFT(bool positiveOnly)
         // result available
         if (m_fixedAverage.nextAverage())
         {
+            //TODO refactor
+            static constexpr uint32_t NrOfBwMultiplier = 2;
+            m_nrOfBwSample++;
+            if (m_nrOfBwSample < NrOfBwMultiplier)
+            {
+                m_powerSpectrumBuffer.insert(m_powerSpectrumBuffer.end(), m_powerSpectrum.begin(), m_powerSpectrum.end());
+                return;
+            }
+            m_powerSpectrum.insert(m_powerSpectrum.begin(), m_powerSpectrumBuffer.begin(), m_powerSpectrumBuffer.end());
             m_specMax = specMax;
 
             // send new data to visualisation
@@ -621,8 +631,8 @@ void SpectrumVis::processFFT(bool positiveOnly)
             {
                 m_glSpectrum->newSpectrum(
                     &m_powerSpectrum.data()[fftMin],
-                    fftMax - fftMin,
-                    m_settings.m_fftSize
+                    (fftMax - fftMin) * NrOfBwMultiplier,
+                    m_settings.m_fftSize * NrOfBwMultiplier
                 );
             }
 
@@ -631,8 +641,8 @@ void SpectrumVis::processFFT(bool positiveOnly)
             {
                 m_wsSpectrum.newSpectrum(
                     m_powerSpectrum,
-                    m_settings.m_fftSize,
-                    m_centerFrequency,
+                    m_settings.m_fftSize * NrOfBwMultiplier,
+                    m_centerFrequency,  //TODO
                     m_sampleRate,
                     m_settings.m_linear,
                     m_settings.m_ssb,

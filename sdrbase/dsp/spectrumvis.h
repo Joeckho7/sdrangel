@@ -217,6 +217,7 @@ private:
 
 	std::vector<Complex> m_fftBuffer;
 	std::vector<Real> m_powerSpectrum; //!< displayable power spectrum
+    std::vector<Real> m_powerSpectrumBuffer; //!< power spectrum buffer
     std::vector<Real> m_psd; //!< real PSD
 
     SpectrumSettings m_settings;
@@ -238,6 +239,7 @@ private:
 
     uint64_t m_centerFrequency;
     int m_sampleRate;
+    uint32_t m_nrOfBwSample;
 
 	Real m_ofs;
 	Real m_powFFTDiv;

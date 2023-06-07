@@ -1,0 +1,20 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="sdrangel" type="com.jetbrains.cidr.remote.gdbserver.type" factoryName="com.jetbrains.cidr.remote.gdbserver.factory" nameIsGenerated="true" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" WORKING_DIR="file:///opt/install/sdrangel/bin" PASS_PARENT_ENVS_2="true" PROJECT_NAME="sdrangel" TARGET_NAME="sdrangel" CONFIG_NAME="Debug-Docker" version="1" RUN_TARGET_PROJECT_NAME="sdrangel" RUN_TARGET_NAME="sdrangel">
+    <envs>
+      <env name="LD_LIBRARY_PATH" value="/opt/install/sdrangel/lib/sdrangel:/opt/install/libsdrplay/lib:/opt/install/xtrx-images/lib" />
+      <env name="DISPLAY" value="unix:0" />
+    </envs>
+    <custom-gdb-server version="1" gdb-connect="localhost:1234" executable="" warmup-ms="0" download-type="ALWAYS" sshConfigName="sdr@localhost:2222 password" uploadFile="/opt/install/sdrangel/bin/sdrangel" defaultGdbServerArgs=":1234 /opt/install/sdrangel/bin/sdrangel">
+      <debugger kind="GDB" isBundled="true" />
+    </custom-gdb-server>
+    <method v="2">
+      <option name="CLION.COMPOUND.BUILD" enabled="true" />
+      <option name="FtpUpload" enabled="true">
+        <server_id>1a1db94a-34bd-402b-a286-e0c81e354683</server_id>
+        <server_name>docker-sftp</server_name>
+        <group_name />
+        <path>$PROJECT_DIR$/cmake-build-debug-docker/lib</path>
+      </option>
+    </method>
+  </configuration>
+</component>

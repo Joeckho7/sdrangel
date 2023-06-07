@@ -10,8 +10,8 @@
     <method v="2">
       <option name="CLION.COMPOUND.BUILD" enabled="true" />
       <option name="FtpUpload" enabled="true">
-        <server_id>1a1db94a-34bd-402b-a286-e0c81e354683</server_id>
-        <server_name>docker-sftp</server_name>
+        <server_id>fc67c5c7-17c9-4db0-bc6d-34147e438442</server_id>
+        <server_name>docker</server_name>
         <group_name />
         <path>$PROJECT_DIR$/cmake-build-debug-docker/lib</path>
       </option>

@@ -4492,7 +4492,7 @@ void GLSpectrumView::setFrequencyScale()
 
     getFrequencyZoom(centerFrequency, frequencySpan);
     m_frequencyScale.setSize(width() - m_leftMargin - m_rightMargin);
-    m_frequencyScale.setRange(Unit::Frequency, centerFrequency - frequencySpan / 2.0, centerFrequency + frequencySpan / 2.0);
+    m_frequencyScale.setRange(Unit::Frequency, centerFrequency - frequencySpan, centerFrequency + frequencySpan);
     m_frequencyScale.setMakeOpposite(m_lsbDisplay);
 }
 
@@ -4983,8 +4983,8 @@ void GLSpectrumView::formatTextInfo(QString& info)
         int64_t centerFrequency;
         int frequencySpan;
         getFrequencyZoom(centerFrequency, frequencySpan);
-        info.append(tr("CF:%1 ").arg(displayScaled(centerFrequency, 'f', getPrecision(centerFrequency/frequencySpan), true)));
-        info.append(tr("SP:%1 ").arg(displayScaled(frequencySpan, 'f', 3, true)));
+        info.append(tr("Freq Center:%1 ").arg(displayScaled(centerFrequency, 'f', getPrecision(centerFrequency/frequencySpan), true)));
+        info.append(tr("Freq Span:%1 ").arg(displayScaled(frequencySpan, 'f', 3, true)));
     }
 }
 

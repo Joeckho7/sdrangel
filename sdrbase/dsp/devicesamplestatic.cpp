@@ -29,7 +29,8 @@ int64_t DeviceSampleStatic::calculateSourceDeviceCenterFrequency(
             FrequencyShiftScheme frequencyShiftScheme,
             bool transverterMode)
 {
-    int64_t deviceCenterFrequency = centerFrequency;
+    int64_t deviceCenterFrequency = centerFrequency + 2000000;
+    //RTL SDR frekuency di sini contoh center frekuensi 102MHz maka tinggal di tambah 2000000 pada line 32
     deviceCenterFrequency -= transverterMode ? transverterDeltaFrequency : 0;
     deviceCenterFrequency = deviceCenterFrequency < 0 ? 0 : deviceCenterFrequency;
     int64_t f_img = deviceCenterFrequency;
